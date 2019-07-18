@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css"/>
+
+    <style>
+        body {
+            padding-top: 50px;
+        }
+    </style>
+
+    <title>Update visit - dentist app</title>
+</head>
+<body>
+<div class="container">
+    <form action="#" th:action="@{/update/{id}(id=${visit.id})}" th:object="${visit}" method="post">
+        <div class="form-group">
+            <label for="dentistName">Select dentist</label>
+            <select class="form-control" th:field="*{dentistName}" id="dentistName">
+                <option th:value="'Zoidberg'" th:text="'Zoidberg'">Zoidberg</option>
+                <option th:value="'Dr Evil'" th:text="'Dr Evil'">Dr Evil</option>
+                <option th:value="'Sheldon Cooper'" th:text="'Sheldon Cooper'">Sheldon Cooper</option>
+                <option th:value="'Dr House'" th:text="'Dr House'">Dr House</option>
+                <option th:value="'Emmett Brown'" th:text="'Emmett Brown'">Emmett Brown</option>
+            </select>
+            <span th:if="${#fields.hasErrors('dentistName')}" th:errors="*{dentistName}" class="alert alert-danger" role="alert"></span>
+        </div>
+        <div class="form-group">
+            <label for="visitTime">Visit time</label>
+            <input type="text" class="form-control" th:field="*{visitTime}" id="visitTime" autocomplete="off"/>
+            <span th:if="${#fields.hasErrors('visitTime')}" th:errors="*{visitTime}"></span>
+        </div>
+        <input type="submit" class="btn btn-warning" value="Update visit"/>
+    </form>
+
+    <br/><br/>
+    <a class="btn btn-secondary" href="/addvisit" role="button">Cancel</a>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+<script>
+    $('#visitTime').datepicker({
+        format: "dd.mm.yyyy",
+        weekStart: 1,
+        startDate: 0,
+        autoclose: true,
+        todayHighlight: true
+        });
+</script>
+</body>
+</html>
