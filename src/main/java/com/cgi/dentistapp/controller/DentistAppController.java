@@ -25,7 +25,7 @@ public class DentistAppController {
 ////        return "form";
 ////    }
 
-    @GetMapping("/addvisit")
+    @GetMapping("/")
     public String showAddVisit(DentistVisitEntity dentistVisitEntity, Model model) {
         model.addAttribute("visits", dentistVisitRepository.findAll());
         return "index";
@@ -42,7 +42,7 @@ public class DentistAppController {
 //        return "index";
 //    }
 
-    @PostMapping("/addvisit")
+    @PostMapping("/")
     public String addVisit(@Valid DentistVisitEntity dentistVisitEntity, BindingResult result, Model model) {
         if (result.hasErrors()) {
             model.addAttribute("visits", dentistVisitRepository.findAll());
